@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://iauv5pt4vnr3"]
+
+[ext_resource type="Script" path="res://GameCamera.gd" id="1_pdda5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_51wpm"]
+font_size = 96
+font_color = Color(0.501961, 0.25098, 0.25098, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_wfg1b"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, -324)
+script = ExtResource("1_pdda5")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_top = -500.0
+offset_right = 1152.0
+offset_bottom = -368.0
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+text = "MATHEMALFUNCTION"
+label_settings = SubResource("LabelSettings_51wpm")
+
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+offset_top = -200.0
+offset_right = 1152.0
+offset_bottom = -160.0
+
+[node name="Button" type="Button" parent="CenterContainer2"]
+layout_mode = 2
+text = "Start Game"
+script = SubResource("GDScript_wfg1b")
+
+[node name="CenterContainer3" type="CenterContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="TextureButton" type="TextureButton" parent="CenterContainer3"]
+layout_mode = 2
+action_mode = 0
+
+[connection signal="button_down" from="CenterContainer2/Button" to="Camera2D" method="_on_button_button_down"]
